@@ -66,37 +66,34 @@ public class Controle {
     
 
     @GetMapping("api/ordenarNomes")
-    public List<Aluno> ordenarNomes(){
-        return acao.findByOrderByNome();
+    public ResponseEntity<?> ordenarNomes(){
+        return servico.ordenarNomes();
     }
 
     @GetMapping("/api/nomeContem/{termo}")
-    public List<Aluno> nomeContem(@PathVariable String termo){
-        return acao.findByNomeContaining(termo);
+    public ResponseEntity<?>nomeContem(@PathVariable String termo){
+        return servico.nomeContem(termo);
     }
     
     @GetMapping("/api/iniciaCom/{termo}")
-    public List<Aluno> iniciaCom(@PathVariable String termo){
-        return acao.findByNomeStartsWith(termo);
+    public ResponseEntity<?> iniciaCom(@PathVariable String termo){
+        return servico.iniciaCom(termo);
     }
 
     @GetMapping("/api/terminaCom/{termo}")
-    public List<Aluno> terminaCom(@PathVariable String termo){
-        return acao.findByNomeEndsWith(termo);
+    public ResponseEntity<?> terminaCom(@PathVariable String termo){
+        return servico.terminaCom(termo);
     }
 
     @GetMapping("api/somaMedias")
-    public double somaMedias(){
-        return acao.somaMedias();
+    public ResponseEntity<?> somaMedias(){
+        return servico.somaMedias();
     }
 
     @GetMapping("api/mediaMaiorIgual/{nota}")
-    public List<Aluno> mediaMaiorIgual(@PathVariable double nota){
-        return acao.mediaMaiorIgual(nota);
+    public ResponseEntity<?> mediaMaiorIgual(@PathVariable double nota){
+        return servico.mediaMaiorIgual(nota);
     }
 
-    @GetMapping("/status")
-    public ResponseEntity<?> status(){
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+    
 }

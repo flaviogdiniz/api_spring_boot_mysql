@@ -90,4 +90,27 @@ public class Servico {
         }
     }
 
+    public ResponseEntity<?>ordenarNomes(){
+        return new ResponseEntity<>(acao.findByOrderByNome(), HttpStatus.OK);
+    }
+
+    public ResponseEntity<?>nomeContem(String termo){
+        return new ResponseEntity<>(acao.findByNomeContaining(termo), HttpStatus.OK);
+    }
+
+    public ResponseEntity<?>iniciaCom(String termo){
+        return new ResponseEntity<>(acao.findByNomeStartsWith(termo),HttpStatus.OK);
+    }
+
+    public ResponseEntity<?>terminaCom(String termo){
+        return new ResponseEntity<>(acao.findByNomeEndsWith(termo),HttpStatus.OK);
+    }
+
+    public ResponseEntity<?>somaMedias(){
+        return new ResponseEntity<>(acao.somaMedias(),HttpStatus.OK);
+    }
+
+    public ResponseEntity<?>mediaMaiorIgual(double nota){
+        return new ResponseEntity<>(acao.mediaMaiorIgual(nota),HttpStatus.OK);
+    }
 }
